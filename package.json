@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.8"
+  },
+  "name": "my-school-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/My-School-App/my-school-backend.git"
+  },
+  "author": "KosyAbone and AyomideOwolana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/My-School-App/my-school-backend/issues"
+  },
+  "homepage": "https://github.com/My-School-App/my-school-backend#readme",
+  "description": ""
+}
