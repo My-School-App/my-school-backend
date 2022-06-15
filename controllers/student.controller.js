@@ -24,7 +24,7 @@ exports.createStudent = async(req, res) => {
             currentClass,
             subjects
         })
-        res.status(201).json(student)
+        res.status(201).json({student: student, message: `Account creation with user id: ${id} successful!`})
 
     }catch(err){
         res.status(500).json({message: err.message})
