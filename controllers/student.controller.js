@@ -1,10 +1,16 @@
 const Student = require('../models/student.model')
 
+exports.testRoute = async(req, res) => {
+
+    res.json({message: 'Test route is working.'})
+
+}
+
 exports.createStudent = async(req, res) => {
     const { id, firstName, lastName, currentClass, subjects } = req.body
 
     try{
-        
+
         const existingUser = await Student.findById({id})
 
         if(existingUser){
