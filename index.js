@@ -12,6 +12,6 @@ app.get('/', (req, res) =>
     res.send('Home route working.')
 )
 
-app.use('/student', studentRoute)
+// app.use('/student', studentRoute)
 
 app.listen(PORT, () => console.log(`Server started successfully at port ${PORT}`))
