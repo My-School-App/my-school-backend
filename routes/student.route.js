@@ -5,5 +5,7 @@ router.get('/', studentController.testRoute);
 
 router.post('/', studentController.createStudent);
 
+router.get("/all-students", studentController.getAllStudents)
+
 
 module.exports = router

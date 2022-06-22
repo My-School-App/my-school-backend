@@ -5,28 +5,40 @@ exports.testRoute = async (req, res) => {
 };
 
 exports.createStudent = async (req, res) => {
-  const { id, firstName, lastName, currentClass, subjects } = req.body;
+  const {
+    firstName,
+    lastName,
+    currentClass,
+    subjects,
+    yearJoined,
+    age
+  } = req.body;
 
   try {
-    const existingUser = await Student.findById({ id });
+    const existingUser = await Student.findOne({ firstName });
 
     if (existingUser) {
       return res.status(404).send("User already exists. Please Login");
-    }
-
-    const student = await Student.create({
-      id,
-      firstName,
-      lastName,
-      currentClass,
-      subjects
-    });
-    res
-      .status(201)
-      .json({
-        student: student,
-        message: `Account creation with user id: ${id} successful!`
+    } else {
+      const student = await Student.create({
+        firstName,
+        lastName,
+        currentClass,
+        subjects,
+        yearJoined,
+        age
       });
+      res.status(201).json(student);
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getAllStudents = async (req, res) => {
+  try {
+    const students = await Student.find();
+    res.status(200).json(students);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
