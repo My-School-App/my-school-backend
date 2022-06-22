@@ -4,28 +4,36 @@ const app = express();
 const { PORT } = process.env;
 const db = require("./database");
 const studentRoute = require("./routes/student.route");
+const assignmentRoute = require("./routes/assignment.route");
 const path = require("path");
+
+const options = {
+  root: path.join(__dirname)
+};
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // allows express to use absolute file paths
-const options = {
-  root: path.join(__dirname)
-};
 
 // allows express serve static files
 app.use(express.static("public"));
 
 app.get("/", (req, res) => res.send("Home route working."));
 
-app.use("/student", studentRoute);
+// login
+app.get("/login", (req, res) => res.sendFile("/public/pages/login.html"));
 
-// upload assignments route
-app.get("/upload-assignment", (req, res) =>
-  res.sendFile("/public/pages/assignment-upload.html", options)
-);
+app.post("/login", (req, res) => {
+  const { username, password } = res.body;
+  username == "test" && password == "test" ? res.redirect("/dashboard") : "";
+});
+
+app.use("/student", studentRoute);
+app.use("/assignment", assignmentRoute);
 
 app.listen(PORT, () =>
   console.log(`Server started successfully at port ${PORT}`)
 );
+
+module.exports = { options };
