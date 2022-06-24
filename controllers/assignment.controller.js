@@ -1,7 +1,6 @@
-const {options }=require("../index")
+// const {options } = require("../index")
+const path = require("path");
 
 exports.assignmentHandler = (req, res) => {
-  res.sendFile("/home/ayomide-owolana/Desktop/myschoolapp/my-school-backend/public/pages/assignment-upload.html");
-//   res.sendFile("./public/pages/assignment-upload.html",options);
-// res.json({text:"htllo"})
+  res.sendFile((path.join(__dirname, '../public', 'pages/assignment-upload.html')));
 };
